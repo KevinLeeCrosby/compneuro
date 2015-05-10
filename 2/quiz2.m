@@ -2,8 +2,8 @@ close all; clear all; clc;
 load('c1p8.mat');
 
 % Fill in these values
-sampling_period = ; % in ms
-num_timesteps = ;
+sampling_period = 1000 / 500; % in ms
+num_timesteps = 300 / sampling_period;
 
 sta = compute_sta(stim, rho, num_timesteps);
 

@@ -1,4 +1,4 @@
-function [ sta ] = compute_sta( stim, rho, num_timesteps )
+function sta = compute_sta( stim, rho, num_timesteps )
 %COMPUTE_STA Calculates the spike-triggered average for a neuron that
 %            is driven by a stimulus defined in stim. The spike-
 %            triggered average is computed over num_timesteps timesteps.
@@ -10,7 +10,7 @@ function [ sta ] = compute_sta( stim, rho, num_timesteps )
 
     % Fill in this value. Note that you should not count spikes that occur
     % before 300 ms into the recording.
-    num_spikes = ;
+    num_spikes = length(spike_times);
     
 
     
@@ -24,5 +24,10 @@ function [ sta ] = compute_sta( stim, rho, num_timesteps )
     % 
     % Your code goes here.
 
+    sta = zeros(num_timesteps, 1);
+    for spike_time = spike_times'
+      sta = sta + stim(spike_time-num_timesteps+1 : spike_time);
+    end % for spike
+    sta = sta / num_spikes;
 end
 
