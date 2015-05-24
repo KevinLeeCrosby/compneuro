@@ -24,7 +24,6 @@ function sta = compute_sta( stim, rho, num_timesteps )
     % 
     % Your code goes here.
 
-    sta = zeros(num_timesteps, 1);
     for spike_time = spike_times'
       sta = sta + stim(spike_time-num_timesteps+1 : spike_time);
     end % for spike
