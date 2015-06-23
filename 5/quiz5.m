@@ -2,10 +2,19 @@ function quiz5
 
 close all
 
+% problem 1
+pkg load image
+img = imread('q5_pave.jpg');
+rimg = imread('q5_paveBlurred.jpg');
+f1 = [1 0 0 0 0; 1 0 0 0 0; 1 0 0 0 0; 0 0 0 1 0; 0 0 0 1 0];
+f2 = [1 0 0 0 -1; -1 1 0 0 0; 0 -1 1 0 0; 0 0 -1 1 0; 0 0 0 -1 1]*3/4;
+f3 = eye(5)/2;
+f4 = [1 1 0 0 1; 1 1 1 0 0; 0 1 1 1 0 ; 0 0 1 1 1; 1 0 0 1 1]/3; <== blurring
+
 % problem 3
 W = 0.1 * ones(5) + 0.5*eye(5);
 u = [0.6 .5 .6 .2 .1]';
-M = 1/2 * ([0 0 1 1 0; 0 0 0 1 1; 1 0 0 0 1; 1 1 0 0 0; 0 1 1 0 0] - eye(5));
+M = 1/4 * ([0 0 1 1 0; 0 0 0 1 1; 1 0 0 0 1; 1 1 0 0 0; 0 1 1 0 0] - eye(5));
 I = eye(5);
 
 vss = -(M - I) \ W*u
@@ -20,7 +29,7 @@ end % for
 vss
 
 % problem 4
-Q = [0.2 0.1; 0.1 0.3];
+Q = [0.15 0.1; 0.1 0.12];
 [e lambdas] = eig(Q);
 w = 2*e(:, 2);
 
