@@ -2,10 +2,9 @@ function quiz5
 
 close all
 
-% problem 3
 W = 0.1 * ones(5) + 0.5*eye(5);
 u = [0.6 .5 .6 .2 .1]';
-M = 1/2 * ([0 0 1 1 0; 0 0 0 1 1; 1 0 0 0 1; 1 1 0 0 0; 0 1 1 0 0] - eye(5));
+M = 3/4 * ([0 0 1 1 0; 0 0 0 1 1; 1 0 0 0 1; 1 1 0 0 0; 0 1 1 0 0] - eye(5));
 I = eye(5);
 
 vss = -(M - I) \ W*u
@@ -18,12 +17,6 @@ for i = 1:5
   vss = vss + dot(e(:, i), W*u) * e(:, i) / (1 - lambdas(i));
 end % for
 vss
-
-% problem 4
-Q = [0.2 0.1; 0.1 0.3];
-[e lambdas] = eig(Q);
-w = 2*e(:, 2);
-
 
 % problem 8
 % t_peaks = 0.5:0.5:10; % ms
